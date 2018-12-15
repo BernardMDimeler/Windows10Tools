@@ -1,0 +1,92 @@
+#This is a Powershell Script to Remove Most of Windows 10 Bloat & Adware. 
+#Depending on the version of Windows 10, this will find most of the bloatware and remove it. 
+
+#This Should Be Edited/Saved using Windows Powershell ISE as a .ps1 file. Other file types and editing platforms may be used but for
+#this script, that is what I have used. 
+
+#Start Script
+
+#Right Click and Run with Powershell 
+
+#This checks for PS Elavated - See Line 88
+
+If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
+
+{   
+
+#Setting the arguments to obtain package information and start removal.
+#You will see tons of RED and Errors, don't worry about that, it's because that APP is not installed so that is fine.
+
+$arguments = 
+"
+  Get-AppxPackage -AllUsers *WindowsMaps* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *MicrosoftSolitaireCollection* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *BingFinance* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *ZuneVideo* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *BingNews* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *WindowsPhone* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Windows.Photos* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *BingSports* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *XboxApp* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *BingWeather* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *WindowsSoundRecorder* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *SkypeApp* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *MicrosoftOfficeHub* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *windowscommunicationsapps* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Microsoft.People* | Remove-AppxPackage 
+  Get-AppxPackage -AllUsers *MSPaint* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Microsoft.Advertising.Xaml* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *DolbyLaboratories.DolbyAccess* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Microsoft.WebMediaExtensions* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *FitBit.FitbitCoach* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *OfficeHub* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *GetStarted* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *BingNews* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *BingWeather* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *ZuneMusic* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *ZuneVideo* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *WindowsMaps* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *OneNote* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *3DBuilder* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *3DView* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *AutoDeskSketch* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Photos* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Print3D* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Phototastic* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *SoundRecorder* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *WindowsCamera* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *WindowsAlarm* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *People* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Messaging* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Communicationsapps* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Feedbackhub* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Oneconnect* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Keeper* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *XboxApp* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *XboxSpeech* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Xbox.tcui* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *SkypeApp* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Facebook* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Twitter* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Minecraft* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *CandyCrush* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Empires* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *BubbleWitch* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *CookingFever* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *DragonMania* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *HiddenCity* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *GetHelp* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *WebMediaExtension* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Wallet* | Remove-AppxPackage
+
+"
+
+
+#We need PS Elavated - Should Prompt for RunAs Admin, Select YES
+#Once Admin, it will run our arguments we have created above.
+
+Start-Process powershell -Verb runAs -ArgumentList $arguments
+
+Break
+
+}
