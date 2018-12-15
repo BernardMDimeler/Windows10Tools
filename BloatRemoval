@@ -8,7 +8,7 @@
 
 #Right Click and Run with Powershell 
 
-#This checks for PS Elavated - See Line 88
+#This checks for PS Elavated - See Line 89
 
 If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
 
@@ -78,6 +78,7 @@ $arguments =
   Get-AppxPackage -AllUsers *GetHelp* | Remove-AppxPackage
   Get-AppxPackage -AllUsers *WebMediaExtension* | Remove-AppxPackage
   Get-AppxPackage -AllUsers *Wallet* | Remove-AppxPackage
+  Get-AppxPackage -AllUsers *Microsoft.YourPhone* | Remove-AppxPackage
 
 "
 
